@@ -11,19 +11,11 @@
 		 </property>
 	</bean>
 	
-	<bean id="triangle1" class="com.expedia.pshingavi.springdemo.Triangle" parent="parenttriangle">
+	<bean id="triangle" class="com.expedia.pshingavi.springdemo.Triangle" parent="parenttriangle">
 		 <property name="points">
 		 	<list merge="true">
 		 		<ref bean="pointB"/>
 		 		<ref bean="pointC"/>
-		 	</list>
-		 </property>
-	</bean>
-	
-	<bean id="triangle2" class="com.expedia.pshingavi.springdemo.Triangle" parent="parenttriangle">
-		 <property name="points">
-		 	<list  merge="true">
-		 		<ref bean="pointB"/>
 		 	</list>
 		 </property>
 	</bean>
@@ -40,4 +32,6 @@
 		<property name="x" value="20"/>
 		<property name="y" value="20"/>
 	</bean>
+	
+	<bean class="com.expedia.pshingavi.springdemo.DisplayNameBeanPostProcessor"/>
 </beans>
