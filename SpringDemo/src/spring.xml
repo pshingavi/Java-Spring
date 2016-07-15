@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
-
-<beans default-init-method="defaultInit" default-destroy-method="defaultDestroy">
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd"> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+<!-- <beans default-init-method="defaultInit" default-destroy-method="defaultDestroy"> -->
 	<!-- ABSTRACT BEAN TEMPLATE to reuse , also doesn't create a new bean parenttriangle -->
 	<bean id="parenttriangle" class="com.expedia.pshingavi.springdemo.Triangle" abstract="true" init-method="triangleInit" destroy-method="triangleDestroy">
 		 <!-- <property name="points">
@@ -19,17 +25,17 @@
 		 	</list>
 		 </property> -->
 	</bean>
-	
 	<bean id="circle" class="com.expedia.pshingavi.springdemo.Circle">
 		<!-- <property name="center" ref="pointA" /> -->
 	</bean>
 	
 	<bean id="pointA" class="com.expedia.pshingavi.springdemo.Point">
+		<qualifier value="circleQualifier"/>
 		<property name="x" value="${pointA.pointX}"/>	<!-- See bean org.springframework.beans.factory.config.PropertyPlaceholderConfigurer 
 															and MyBeanFactoryPostProcessor-->
 		<property name="y" value="${pointA.pointY}"/>
 	</bean>
-	
+ 	
 	<bean id="pointB" class="com.expedia.pshingavi.springdemo.Point">
 		<property name="x" value="10"/>
 		<property name="y" value="10"/>
@@ -41,7 +47,12 @@
 	
 	<!-- <bean class="com.expedia.pshingavi.springdemo.DisplayNameBeanPostProcessor"/> -->
 	<!-- <bean class="com.expedia.pshingavi.springdemo.MyBeanFactoryPostProcessor"/> -->
-	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+	<!-- <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/> -->
+	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/> -->
+	
+	<!-- Have all the BeanPostProcessors instead adding each as above -->
+	<context:annotation-config/>
+	
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations" value="pointsconfig.properties"/>
 	</bean>
