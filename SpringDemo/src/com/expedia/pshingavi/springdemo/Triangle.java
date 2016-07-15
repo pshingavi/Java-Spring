@@ -2,6 +2,8 @@ package com.expedia.pshingavi.springdemo;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.context.ApplicationContext;
 
 public class Triangle implements Shape {
@@ -18,6 +20,7 @@ public class Triangle implements Shape {
 		return pointA;
 	}
 
+	@Resource(name="pointA")
 	public void setPointA(Point pointA) {
 		this.pointA = pointA;
 	}
@@ -26,6 +29,7 @@ public class Triangle implements Shape {
 		return pointB;
 	}
 
+	@Resource(name="pointB")
 	public void setPointB(Point pointB) {
 		this.pointB = pointB;
 	}
@@ -34,6 +38,7 @@ public class Triangle implements Shape {
 		return pointC;
 	}
 
+	@Resource(name="pointC")
 	public void setPointC(Point pointC) {
 		this.pointC = pointC;
 	}

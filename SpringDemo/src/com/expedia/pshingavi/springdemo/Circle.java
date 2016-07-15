@@ -1,5 +1,8 @@
 package com.expedia.pshingavi.springdemo;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -24,4 +27,13 @@ public class Circle implements Shape {
 		System.out.println("Point : " + this.center.getX() + ", " + this.center.getY());
 	}
 
+	@PostConstruct
+	public void initCircle() {
+		System.out.println("At circle post construct");
+	}
+	
+	@PreDestroy
+	public void destroyCircle() {
+		System.out.println("At circle pre destroy");
+	}
 }

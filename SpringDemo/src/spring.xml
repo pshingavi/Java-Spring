@@ -17,7 +17,7 @@
 		 </property> -->
 	</bean>
 	
-	<bean id="triangle" class="com.expedia.pshingavi.springdemo.Triangle" parent="parenttriangle" autowire="byName">
+	<bean id="triangle" class="com.expedia.pshingavi.springdemo.Triangle" parent="parenttriangle">
 		 <!-- <property name="points">
 		 	<list merge="true">
 		 		<ref bean="pointB"/>
@@ -46,7 +46,7 @@
 	</bean>
 	
 	<!-- <bean class="com.expedia.pshingavi.springdemo.DisplayNameBeanPostProcessor"/> -->
-	<!-- <bean class="com.expedia.pshingavi.springdemo.MyBeanFactoryPostProcessor"/> -->
+	<bean class="com.expedia.pshingavi.springdemo.MyBeanFactoryPostProcessor"/>
 	<!-- <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/> -->
 	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/> -->
 	
