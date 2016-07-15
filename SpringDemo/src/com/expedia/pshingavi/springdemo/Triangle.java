@@ -1,5 +1,7 @@
 package com.expedia.pshingavi.springdemo;
 
+import java.util.List;
+
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.context.ApplicationContext;
@@ -7,14 +9,13 @@ import org.springframework.context.ApplicationContextAware;
 
 public class Triangle implements ApplicationContextAware, BeanNameAware{
 
-	private Point pointA;
-	private Point pointB;
-	private Point pointC;
+	private List<Point> points;
+	
 	private String beanName;
 	
 	private ApplicationContext ctx = null;
 	
-	public Point getPointA() {
+	/*public Point getPointA() {
 		return pointA;
 	}
 
@@ -37,11 +38,25 @@ public class Triangle implements ApplicationContextAware, BeanNameAware{
 	public void setPointC(Point pointC) {
 		this.pointC = pointC;
 	}
-
+*/
+	
+	
 	public void draw() {
-		System.out.println(this.getPointA().getX() + " :::: " + this.getPointA().getY());
+/*		System.out.println(this.getPointA().getX() + " :::: " + this.getPointA().getY());
 		System.out.println(this.getPointB().getX() + " :::: " + this.getPointB().getY());
 		System.out.println(this.getPointC().getX() + " :::: " + this.getPointC().getY());
+		*/
+		for(Point point : this.points) {
+			System.out.println(point.getX() + " :::: " + point.getY());
+		}
+	}
+
+	public List<Point> getPoints() {
+		return points;
+	}
+
+	public void setPoints(List<Point> points) {
+		this.points = points;
 	}
 
 	@Override
