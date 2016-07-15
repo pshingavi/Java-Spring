@@ -4,15 +4,17 @@ import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 
-public class Triangle {
+public class Triangle implements Shape {
 
-	private List<Point> points;
+	private Point pointA;
+	private Point pointB;
+	private Point pointC;
 	
 	private String beanName;
 	
 	private ApplicationContext ctx = null;
 	
-	/*public Point getPointA() {
+	public Point getPointA() {
 		return pointA;
 	}
 
@@ -35,26 +37,25 @@ public class Triangle {
 	public void setPointC(Point pointC) {
 		this.pointC = pointC;
 	}
-*/
-	
 	
 	public void draw() {
-/*		System.out.println(this.getPointA().getX() + " :::: " + this.getPointA().getY());
+		System.out.println("Drawing Triangle");
+		System.out.println(this.getPointA().getX() + " :::: " + this.getPointA().getY());
 		System.out.println(this.getPointB().getX() + " :::: " + this.getPointB().getY());
 		System.out.println(this.getPointC().getX() + " :::: " + this.getPointC().getY());
-		*/
+		/*	
 		for(Point point : this.points) {
 			System.out.println(point.getX() + " :::: " + point.getY());
-		}
+		}*/
 	}
 
-	public List<Point> getPoints() {
+/*	public List<Point> getPoints() {
 		return points;
 	}
 
 	public void setPoints(List<Point> points) {
 		this.points = points;
-	}
+	}*/
 
 /*	@Override
 	public void setApplicationContext(ApplicationContext ctx) throws BeansException {

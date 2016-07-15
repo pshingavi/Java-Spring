@@ -4,20 +4,24 @@
 <beans default-init-method="defaultInit" default-destroy-method="defaultDestroy">
 	<!-- ABSTRACT BEAN TEMPLATE to reuse , also doesn't create a new bean parenttriangle -->
 	<bean id="parenttriangle" class="com.expedia.pshingavi.springdemo.Triangle" abstract="true" init-method="triangleInit" destroy-method="triangleDestroy">
-		 <property name="points">
+		 <!-- <property name="points">
 		 	<list>
 		 		<ref bean="pointA"/>
 		 	</list>
-		 </property>
+		 </property> -->
 	</bean>
 	
-	<bean id="triangle" class="com.expedia.pshingavi.springdemo.Triangle" parent="parenttriangle">
-		 <property name="points">
+	<bean id="triangle" class="com.expedia.pshingavi.springdemo.Triangle" parent="parenttriangle" autowire="byName">
+		 <!-- <property name="points">
 		 	<list merge="true">
 		 		<ref bean="pointB"/>
 		 		<ref bean="pointC"/>
 		 	</list>
-		 </property>
+		 </property> -->
+	</bean>
+	
+	<bean id="circle" class="com.expedia.pshingavi.springdemo.Circle">
+		<!-- <property name="center" ref="pointA" /> -->
 	</bean>
 	
 	<bean id="pointA" class="com.expedia.pshingavi.springdemo.Point">
@@ -37,6 +41,7 @@
 	
 	<!-- <bean class="com.expedia.pshingavi.springdemo.DisplayNameBeanPostProcessor"/> -->
 	<!-- <bean class="com.expedia.pshingavi.springdemo.MyBeanFactoryPostProcessor"/> -->
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations" value="pointsconfig.properties"/>
 	</bean>

@@ -13,10 +13,11 @@ public class DrawingApplication {
 		AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 		ctx.registerShutdownHook();	// Destroy is called for all the beans. See in class Triangle to implement InitializingBean, DisposableBean
 		// File spring.xml is at src root, since we are using Class path app context
-		Triangle triangle = ctx.getBean("triangle", Triangle.class);
+		Shape triangleShape = ctx.getBean("triangle", Shape.class);
 		System.out.println("Triangle 1");
-		triangle.draw();	// Has 3 points merged from parenttriangle template where abstract=true
-		
+		triangleShape.draw();	// Has 3 points merged from parenttriangle template where abstract=true
+		Shape shapeCircle = ctx.getBean("circle", Shape.class);
+		shapeCircle.draw();
 		// Destroy for beans triangle1 and triangle2 called
 	}
 
