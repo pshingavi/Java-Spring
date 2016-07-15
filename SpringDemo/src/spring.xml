@@ -3,7 +3,7 @@
 
 <beans>
 	<!-- ABSTRACT BEAN TEMPLATE to reuse , also doesn't create a new bean parenttriangle -->
-	<bean id="parenttriangle" class="com.expedia.pshingavi.springdemo.Triangle" abstract="true">
+	<bean id="parenttriangle" class="com.expedia.pshingavi.springdemo.Triangle" abstract="true" init-method="triangleInit" destroy-method="triangleDestroy">
 		 <property name="points">
 		 	<list>
 		 		<ref bean="pointA"/>
