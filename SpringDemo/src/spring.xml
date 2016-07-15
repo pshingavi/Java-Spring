@@ -4,7 +4,21 @@
 <beans>
 	<bean id="triangle" class="com.expedia.pshingavi.springdemo.Triangle">
 		<!--  property name="type" value="equilateral"/-->
-		<constructor-arg value="equilateral"/>	<!-- Remove class setter to test this -->
-		<constructor-arg value="20"/>
+		<!-- 
+		USING CONSTRUCTOR
+		 -->
+		<!-- <constructor-arg value="equilateral"/> -->	<!-- Remove class setter to test this -->
+		<!-- <constructor-arg value="20"/> -->
+		
+		<!--
+		USING TYPE 
+		 -->
+		<!-- <constructor-arg type="int" value="20"/>
+		<constructor-arg type="java.lang.String" value="equilateral"/> -->
+		<!--
+		USING INDEX 
+		 -->
+		<constructor-arg index="1" value="20"/>
+		<constructor-arg index="0" type="java.lang.String" value="equilateral"/>
 	</bean>
 </beans>
