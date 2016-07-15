@@ -2,26 +2,18 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
 <beans>
-	<bean id="triangle" class="com.expedia.pshingavi.springdemo.Triangle">
-		<property name="points">
-			<list>
-				<ref bean="zeroPoint"/>
-				<ref bean="point2"/>
-				<ref bean="point3"/>
-			</list>
-		</property>
-	</bean>
+	<bean id="triangle" class="com.expedia.pshingavi.springdemo.Triangle" autowire="byName"/>
 	
-	<bean id="zeroPoint" class="com.expedia.pshingavi.springdemo.Point">
+	<bean id="pointA" class="com.expedia.pshingavi.springdemo.Point">
 		<property name="x" value="0"/>
 		<property name="y" value="0"/>
 	</bean>
 	
-	<bean id="point2" class="com.expedia.pshingavi.springdemo.Point">
+	<bean id="pointB" class="com.expedia.pshingavi.springdemo.Point">
 		<property name="x" value="10"/>
 		<property name="y" value="10"/>
 	</bean>
-	<bean id="point3" class="com.expedia.pshingavi.springdemo.Point">
+	<bean id="pointC" class="com.expedia.pshingavi.springdemo.Point">
 		<property name="x" value="20"/>
 		<property name="y" value="20"/>
 	</bean>
