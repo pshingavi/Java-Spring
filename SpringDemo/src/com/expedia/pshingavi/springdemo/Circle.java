@@ -5,7 +5,13 @@ import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component
+/*
+ * <bean class="...Circle" /> => Single bean definition. So Point class is not @Component
+ * Also to enable spring to know this @component add <context:component-scan> in spring.xml
+ * */
 public class Circle implements Shape {
 
 	private Point center;

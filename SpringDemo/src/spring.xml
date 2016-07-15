@@ -25,9 +25,12 @@
 		 	</list>
 		 </property> -->
 	</bean>
-	<bean id="circle" class="com.expedia.pshingavi.springdemo.Circle">
-		<!-- <property name="center" ref="pointA" /> -->
-	</bean>
+	<!-- 
+	DEFINE BEAN WITH CLASS ANNOTATION @Component. Check Circle class
+	 -->
+	<!-- <bean id="circle" class="com.expedia.pshingavi.springdemo.Circle">
+		<property name="center" ref="pointA" />
+	</bean> -->
 	
 	<bean id="pointA" class="com.expedia.pshingavi.springdemo.Point">
 		<qualifier value="circleQualifier"/>
@@ -52,6 +55,7 @@
 	
 	<!-- Have all the BeanPostProcessors instead adding each as above -->
 	<context:annotation-config/>
+	<context:component-scan base-package="com.expedia.pshingavi.springdemo"></context:component-scan>
 	
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations" value="pointsconfig.properties"/>
