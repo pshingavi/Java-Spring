@@ -3,62 +3,26 @@
 
 <beans>
 	<bean id="triangle" class="com.expedia.pshingavi.springdemo.Triangle">
-		<!--  property name="type" value="equilateral"/-->
-		<!-- 
-		USING CONSTRUCTOR
-		 -->
-		<!-- <constructor-arg value="equilateral"/> -->	<!-- Remove class setter to test this -->
-		<!-- <constructor-arg value="20"/> -->
-		
-		<!--
-		USING TYPE 
-		 -->
-		<!-- <constructor-arg type="int" value="20"/>
-		<constructor-arg type="java.lang.String" value="equilateral"/> -->
-		<!--
-		USING INDEX 
-		 -->
-	<!-- 	<constructor-arg index="1" value="20"/>
-		<constructor-arg index="0" type="java.lang.String" value="equilateral"/> -->
-		
-		<!-- 
-		USE POINT OBJECTS
-		 -->
-		 <property name="pointA" ref="zeroPoint"/>
-		 <!-- or use idref to restric use ids and not alias-name-->	
-		<!--  <property name="pointA">
-		 	<idref="zeroPoint"/>
-		 </property> -->
-		 <property name="pointB">
-		 	<!-- 
-			INNER BEAN
-			 -->
-		 	<bean class="com.expedia.pshingavi.springdemo.Point">
-				<property name="x" value="10"/>
-				<property name="y" value="10"/>
-			</bean>
-		 </property>
-		 <property name="pointC">
-		 	<bean class="com.expedia.pshingavi.springdemo.Point">
-				<property name="x" value="20"/>
-				<property name="y" value="20"/>
-			</bean>
-		 </property>
+		<property name="points">
+			<list>
+				<ref bean="zeroPoint"/>
+				<ref bean="point2"/>
+				<ref bean="point3"/>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="zeroPoint" class="com.expedia.pshingavi.springdemo.Point">
 		<property name="x" value="0"/>
 		<property name="y" value="0"/>
 	</bean>
-	<!-- 
-	MOVE TO INNER BEAN
-	 -->
-	<!-- <bean id="point2" class="com.expedia.pshingavi.springdemo.Point">
+	
+	<bean id="point2" class="com.expedia.pshingavi.springdemo.Point">
 		<property name="x" value="10"/>
 		<property name="y" value="10"/>
-	</bean> -->
-	<!-- <bean id="point3" class="com.expedia.pshingavi.springdemo.Point">
+	</bean>
+	<bean id="point3" class="com.expedia.pshingavi.springdemo.Point">
 		<property name="x" value="20"/>
 		<property name="y" value="20"/>
-	</bean> -->
+	</bean>
 </beans>
