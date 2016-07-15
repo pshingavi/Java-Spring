@@ -18,7 +18,27 @@
 		<!--
 		USING INDEX 
 		 -->
-		<constructor-arg index="1" value="20"/>
-		<constructor-arg index="0" type="java.lang.String" value="equilateral"/>
+	<!-- 	<constructor-arg index="1" value="20"/>
+		<constructor-arg index="0" type="java.lang.String" value="equilateral"/> -->
+		
+		<!-- 
+		USE POINT OBJECTS
+		 -->
+		 <property name="pointA" ref="point1"/>
+		 <property name="pointB" ref="point2"/>
+		 <property name="pointC" ref="point3"/>
+	</bean>
+	
+	<bean id="point1" class="com.expedia.pshingavi.springdemo.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>
+	</bean>
+	<bean id="point2" class="com.expedia.pshingavi.springdemo.Point">
+		<property name="x" value="10"/>
+		<property name="y" value="10"/>
+	</bean>
+	<bean id="point3" class="com.expedia.pshingavi.springdemo.Point">
+		<property name="x" value="20"/>
+		<property name="y" value="20"/>
 	</bean>
 </beans>
