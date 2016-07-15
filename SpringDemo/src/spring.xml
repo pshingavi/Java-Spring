@@ -24,21 +24,41 @@
 		<!-- 
 		USE POINT OBJECTS
 		 -->
-		 <property name="pointA" ref="point1"/>
-		 <property name="pointB" ref="point2"/>
-		 <property name="pointC" ref="point3"/>
+		 <property name="pointA" ref="zeroPoint"/>
+		 <!-- or use idref to restric use ids and not alias-name-->	
+		<!--  <property name="pointA">
+		 	<idref="zeroPoint"/>
+		 </property> -->
+		 <property name="pointB">
+		 	<!-- 
+			INNER BEAN
+			 -->
+		 	<bean class="com.expedia.pshingavi.springdemo.Point">
+				<property name="x" value="10"/>
+				<property name="y" value="10"/>
+			</bean>
+		 </property>
+		 <property name="pointC">
+		 	<bean class="com.expedia.pshingavi.springdemo.Point">
+				<property name="x" value="20"/>
+				<property name="y" value="20"/>
+			</bean>
+		 </property>
 	</bean>
 	
-	<bean id="point1" class="com.expedia.pshingavi.springdemo.Point">
+	<bean id="zeroPoint" class="com.expedia.pshingavi.springdemo.Point">
 		<property name="x" value="0"/>
 		<property name="y" value="0"/>
 	</bean>
-	<bean id="point2" class="com.expedia.pshingavi.springdemo.Point">
+	<!-- 
+	MOVE TO INNER BEAN
+	 -->
+	<!-- <bean id="point2" class="com.expedia.pshingavi.springdemo.Point">
 		<property name="x" value="10"/>
 		<property name="y" value="10"/>
-	</bean>
-	<bean id="point3" class="com.expedia.pshingavi.springdemo.Point">
+	</bean> -->
+	<!-- <bean id="point3" class="com.expedia.pshingavi.springdemo.Point">
 		<property name="x" value="20"/>
 		<property name="y" value="20"/>
-	</bean>
+	</bean> -->
 </beans>
