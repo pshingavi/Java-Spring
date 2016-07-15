@@ -2,12 +2,7 @@ package com.expedia.pshingavi.springdemo;
 
 import java.util.List;
 
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanNameAware;
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 
 public class Triangle {
 
@@ -94,4 +89,10 @@ public class Triangle {
 		System.out.println("My destroy called and not from DisposableBean");
 
 	}
+
+	private void defaultDestroy() {
+		System.out.println("My default destroy called and not from DisposableBean");
+
+	}
+	
 }

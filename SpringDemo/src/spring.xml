@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
-<beans>
+<beans default-init-method="defaultInit" default-destroy-method="defaultDestroy">
 	<!-- ABSTRACT BEAN TEMPLATE to reuse , also doesn't create a new bean parenttriangle -->
 	<bean id="parenttriangle" class="com.expedia.pshingavi.springdemo.Triangle" abstract="true" init-method="triangleInit" destroy-method="triangleDestroy">
 		 <property name="points">
