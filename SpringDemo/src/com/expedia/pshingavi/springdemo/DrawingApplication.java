@@ -19,6 +19,12 @@ public class DrawingApplication {
 		Shape shapeCircle = ctx.getBean("circle", Shape.class);
 		shapeCircle.draw();
 		// Destroy for beans triangle1 and triangle2 called
+		
+		// MessagingSource
+		// 1. Define message source bean. See spring.xml -> id="messageSource"
+		// msg, Object[] for params, default message, LOCALE
+		String message = ctx.getMessage("greeting", null, "Default Greeting. No parameters", null);
+		System.out.println(message);
 	}
 
 }

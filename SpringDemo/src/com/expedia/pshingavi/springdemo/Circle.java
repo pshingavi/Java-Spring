@@ -5,6 +5,7 @@ import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,7 +16,9 @@ import org.springframework.stereotype.Component;
 public class Circle implements Shape {
 
 	private Point center;
-	
+	@Autowired
+	private MessageSource messageSource;	// Interface
+
 	public Point getCenter() {
 		return center;
 	}
@@ -27,10 +30,20 @@ public class Circle implements Shape {
 		this.center = center;
 	}
 
+	public MessageSource getMessageSource() {
+		return messageSource;
+	}
+
+	public void setMessageSource(MessageSource messageSource) {
+		this.messageSource = messageSource;
+	}
+
 	@Override
 	public void draw() {
-		System.out.println("Drawing Circle");
-		System.out.println("Point : " + this.center.getX() + ", " + this.center.getY());
+		System.out.println(this.messageSource.getMessage("drawing.circle", null, "default draw for circle", null));
+		/*System.out.println("Point : " + this.center.getX() + ", " + this.center.getY());*/
+		System.out.println(this.messageSource.getMessage("drawing.point", new Object[] {this.center.getX(), this.center.getY()}, "default draw for circle", null));
+		System.out.println(this.messageSource.getMessage("greeting-circle", null, "Default circle", null));
 	}
 
 	@PostConstruct
