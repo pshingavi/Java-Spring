@@ -5,19 +5,26 @@ import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
+
+import com.expedia.pshingavi.springdemo.listener.DrawEvent;
 
 @Component
 /*
  * <bean class="...Circle" /> => Single bean definition. So Point class is not @Component
  * Also to enable spring to know this @component add <context:component-scan> in spring.xml
  * */
-public class Circle implements Shape {
+public class Circle implements Shape, ApplicationEventPublisherAware {
 
 	private Point center;
 	@Autowired
 	private MessageSource messageSource;	// Interface
+	
+	
+	private ApplicationEventPublisher publisher;	// Set by implementing AppEPubAware.setAppEPubAware()
 
 	public Point getCenter() {
 		return center;
@@ -44,6 +51,8 @@ public class Circle implements Shape {
 		/*System.out.println("Point : " + this.center.getX() + ", " + this.center.getY());*/
 		System.out.println(this.messageSource.getMessage("drawing.point", new Object[] {this.center.getX(), this.center.getY()}, "default draw for circle", null));
 		System.out.println(this.messageSource.getMessage("greeting-circle", null, "Default circle", null));
+		DrawEvent event = new DrawEvent(this);
+		publisher.publishEvent(event);
 	}
 
 	@PostConstruct
@@ -54,5 +63,10 @@ public class Circle implements Shape {
 	@PreDestroy
 	public void destroyCircle() {
 		System.out.println("At circle pre destroy");
+	}
+
+	@Override
+	public void setApplicationEventPublisher(ApplicationEventPublisher publisher) {
+		this.publisher = publisher;
 	}
 }
