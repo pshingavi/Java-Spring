@@ -39,5 +39,9 @@ public class LoggingAspect {
 	/*@Pointcut("execution(* get*())")
 	public void allGetters() {}
 */
+	
+	public void loggingAdvice() {
+		System.out.println("logging advice with proxy call");
+	}
 
 }
