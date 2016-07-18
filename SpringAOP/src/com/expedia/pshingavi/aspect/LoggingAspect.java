@@ -7,7 +7,7 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class LoggingAspect {
 	
-	@Before("allGetters()")	// use pointcut
+	@Before("allGetters() && allModelPackages()")	// use pointcut
 	////@Before("execution(public * get*(..))")	// 0 or more args
 	//@Before("execution(public * get*(*))")	// one argument
 	public void LoggingAdvice() {
@@ -22,6 +22,15 @@ public class LoggingAspect {
 	/**
 	 * Use pointcut to reuse str expression in @Before etc
 	 */
-	@Pointcut("execution(* get*())") // 0 or more arguments
+	@Pointcut("execution(* get*())") // execution point cut expression. 0 or more arguments
 	public void allGetters() {}
+	
+	//@Pointcut("execution(* * com.expedia.pshingavi.model.Circle.*(..))")
+	//@Pointcut("within(com.expedia.pshingavi.model.Circle)")	// Within Circle class
+	//@Pointcut("within(com.expedia.pshingavi.model.*)")	// for all model but not sub packages
+	@Pointcut("within(com.expedia.pshingavi.model..*)")	// for all model and sub packages
+	public void allModelPackages() {
+		
+	}
+
 }
