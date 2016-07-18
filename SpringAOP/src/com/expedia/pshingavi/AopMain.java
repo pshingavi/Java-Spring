@@ -1,7 +1,5 @@
 package com.expedia.pshingavi;
 
-import java.awt.Shape;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

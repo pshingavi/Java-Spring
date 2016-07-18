@@ -7,6 +7,7 @@ public class ShapeService {
 
 	private Circle circle;
 	private Triangle triangle;
+	
 	public Circle getCircle() {
 		return circle;
 	}
