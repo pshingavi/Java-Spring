@@ -20,4 +20,14 @@
 		<bean name="shapeService" class="com.expedia.pshingavi.service.ShapeService" autowire="byName" />
 		
 		<bean name="loggingAspect" class="com.expedia.pshingavi.aspect.LoggingAspect"/>
+		
+		<!-- Aspect config in xml instead of class annotations -->
+		
+		<aop:config>
+			<aop:aspect id="loggingAspect" ref="loggingAspect"> 
+				<aop:pointcut id="allGetters" expression="execution(* get*())"/>
+				<aop:around pointcut-ref="allGetters" method="myAroundAdvice"/>
+				<!-- <aop:around pointcut="execution(* get*())" method="myAroundAdvice"/> and remove above two-->
+			</aop:aspect>
+		</aop:config>
 </beans>
