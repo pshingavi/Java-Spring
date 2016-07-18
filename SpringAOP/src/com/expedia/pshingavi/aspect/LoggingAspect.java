@@ -1,36 +1,34 @@
 package com.expedia.pshingavi.aspect;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
+import com.expedia.pshingavi.model.Circle;
+
 @Aspect
 public class LoggingAspect {
 	
-	@Before("allGetters() && allModelPackages()")	// use pointcut
-	////@Before("execution(public * get*(..))")	// 0 or more args
-	//@Before("execution(public * get*(*))")	// one argument
-	public void LoggingAdvice() {
-		System.out.println("Advice run. Get Method called");
+	@Before("allCircleMethods()")	// use pointcut
+	public void LoggingAdvice(JoinPoint joinPoint) {	// joinPoint is place which triggered this (a method)
+		System.out.println(joinPoint.toString());	// execution(String com.expedia.pshingavi.model.Circle.getName())
+		Circle circle = (Circle) joinPoint.getTarget();
 	}
 	
-	@Before("allGetters()")	// use pointcut
-	public void SecondAdvice() {
-		System.out.println("Second advice executed.");
+	@Before("args(String)")
+	public void stringArgsMethod() {
+		System.out.println("Method with String argument has been called.");
+		// Method with String argument has been called.
 	}
 	
-	/**
-	 * Use pointcut to reuse str expression in @Before etc
-	 */
-	@Pointcut("execution(* get*())") // execution point cut expression. 0 or more arguments
-	public void allGetters() {}
-	
-	//@Pointcut("execution(* * com.expedia.pshingavi.model.Circle.*(..))")
-	//@Pointcut("within(com.expedia.pshingavi.model.Circle)")	// Within Circle class
-	//@Pointcut("within(com.expedia.pshingavi.model.*)")	// for all model but not sub packages
-	@Pointcut("within(com.expedia.pshingavi.model..*)")	// for all model and sub packages
-	public void allModelPackages() {
-		
+	@Before("args(name)")
+	public void stringArgsMethodParam(String name) {
+		System.out.println("Method with String argument has been called : " + name);
+		// Method with String argument has been called : Dummy circle
 	}
+	
+	@Pointcut("within(com.expedia.pshingavi.model.Circle)")	// for all model and sub packages
+	public void allCircleMethods() {}
 
 }
