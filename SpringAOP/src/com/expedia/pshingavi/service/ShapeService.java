@@ -1,5 +1,6 @@
 package com.expedia.pshingavi.service;
 
+import com.expedia.pshingavi.aspect.Loggable;
 import com.expedia.pshingavi.model.Circle;
 import com.expedia.pshingavi.model.Triangle;
 
@@ -8,6 +9,7 @@ public class ShapeService {
 	private Circle circle;
 	private Triangle triangle;
 	
+	@Loggable
 	public Circle getCircle() {
 		return circle;
 	}

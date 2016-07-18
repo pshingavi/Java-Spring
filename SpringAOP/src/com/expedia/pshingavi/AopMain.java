@@ -12,5 +12,11 @@ public class AopMain {
 		ShapeService shapeService = ctx.getBean("shapeService", ShapeService.class);
 		//System.out.println(shapeService.getCircle().getName());
 		shapeService.getCircle();
+		/*PRINTS BELOW
+		 * 
+		    Before Advice
+			After returning
+			After finally
+		 * */
 	}
 }

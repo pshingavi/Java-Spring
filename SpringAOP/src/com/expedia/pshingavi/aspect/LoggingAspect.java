@@ -46,7 +46,7 @@ public class LoggingAspect {
 		// Method with String argument has been called : Dummy circle
 	}
 	
-	@Around("allGetters()")
+	@Around("@annotation(com.expedia.pshingavi.aspect.Loggable)")
 	public Object myAroundAdvice(ProceedingJoinPoint proceedingJointPoint) {
 		Object returnValue = null;
 		// Before
@@ -68,6 +68,9 @@ public class LoggingAspect {
 	@Pointcut("execution(public * get*())")	// for all model and sub packages
 	public void allGetters() {}
 
+	// Naming convention has helped
+	//@Pointcut("execution(* com.expedia.pshingavi.service.*Service.*(..))")
+	
 	
 	@Pointcut("within(com.expedia.pshingavi.model.Circle)")	// for all model and sub packages
 	public void allCircleMethods() {}
