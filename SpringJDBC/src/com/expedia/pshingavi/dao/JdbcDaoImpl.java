@@ -35,6 +35,8 @@ public class JdbcDaoImpl {
 			if(result.next()) {
 				circle = new Circle(circleId, result.getString("name"));
 			}
+			result.close();
+			ps.close();
 			return circle;
 		} catch(Exception e) {
 			throw new RuntimeException();
