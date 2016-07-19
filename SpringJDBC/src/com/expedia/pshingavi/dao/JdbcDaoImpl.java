@@ -1,7 +1,6 @@
 package com.expedia.pshingavi.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +8,7 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.expedia.pshingavi.model.Circle;
@@ -18,7 +18,7 @@ public class JdbcDaoImpl {
 
 	@Autowired
 	private DataSource dataSource;
-	
+	private JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
 
 	public Circle getCircle(int circleId) {
@@ -47,11 +47,18 @@ public class JdbcDaoImpl {
 		}
 	}
 	
+	public int getCircleCount() {
+		String sql = "SELECT COUNT(*) from circle";
+		jdbcTemplate.setDataSource(getDataSource());
+		return jdbcTemplate.queryForObject(sql, Integer.class);
+	}
+	
 	public DataSource getDataSource() {
 		return dataSource;
 	}
 
 	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
+		//this.dataSource = dataSource;
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 }
