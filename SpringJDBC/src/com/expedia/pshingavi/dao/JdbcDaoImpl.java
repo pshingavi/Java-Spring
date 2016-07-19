@@ -16,9 +16,9 @@ import com.expedia.pshingavi.model.Circle;
 @Component
 public class JdbcDaoImpl {
 
-	@Autowired
+	//@Autowired ask spring to set from setter method
 	private DataSource dataSource;
-	private JdbcTemplate jdbcTemplate = new JdbcTemplate();
+	private JdbcTemplate jdbcTemplate = new JdbcTemplate();	// Not ideal place to initialize the template
 
 
 	public Circle getCircle(int circleId) {
@@ -49,7 +49,7 @@ public class JdbcDaoImpl {
 	
 	public int getCircleCount() {
 		String sql = "SELECT COUNT(*) from circle";
-		jdbcTemplate.setDataSource(getDataSource());
+		// jdbcTemplate.setDataSource(getDataSource());	// Can be configured on bean creation rather than in this method, see dataSource setter
 		return jdbcTemplate.queryForObject(sql, Integer.class);
 	}
 	
@@ -57,8 +57,17 @@ public class JdbcDaoImpl {
 		return dataSource;
 	}
 
+	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		//this.dataSource = dataSource;
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
+	}
+
+	public JdbcTemplate getJdbcTemplate() {
+		return jdbcTemplate;
+	}
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
 	}
 }
