@@ -17,9 +17,9 @@ public class JDBCDemo {
 		//System.out.println(dao.getCircleForId(1).getName());
 		System.out.println(dao.getAllCircles().size());	// List<Circle>
 		
-		/*dao.insertCircle(new Circle(3, "Third circle"));
-		System.out.println(dao.getAllCircles().size());*/
-		
+		dao.insertCircle(new Circle(4, "Fourth circle"));
+		System.out.println(dao.getAllCircles().size());
+	
 		// DDL example
 		//dao.createTriangleTable();
 	}
