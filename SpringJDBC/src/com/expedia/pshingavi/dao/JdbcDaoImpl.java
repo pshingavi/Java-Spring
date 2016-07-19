@@ -20,11 +20,11 @@ public class JdbcDaoImpl {
 
 	//@Autowired ask spring to set from setter method
 	private DataSource dataSource;
-	private JdbcTemplate jdbcTemplate = new JdbcTemplate();	// Not ideal place to initialize the template
+	private JdbcTemplate jdbcTemplate;	// Not ideal place to initialize the template
 
 
 	// Long long method implementation
-	public Circle getCircle(int circleId) {
+	/*public Circle getCircle(int circleId) {
 		Connection con = null;
 		// Init client driver
 		try{
@@ -48,7 +48,7 @@ public class JdbcDaoImpl {
 				con.close();
 			} catch (SQLException e) {}
 		}
-	}
+	}*/
 	
 	public int getCircleCount() {
 		String sql = "SELECT COUNT(*) from circle";
@@ -70,6 +70,16 @@ public class JdbcDaoImpl {
 	public List<Circle> getAllCircles() {
 		String sql = "SELECT * FROM CIRCLE";
 		return jdbcTemplate.query(sql, new CircleMapper());
+	}
+	
+	public void insertCircle(Circle circle) {
+		String sql = "INSERT INTO CIRCLE (ID, NAME) VALUES(?,?)";
+		jdbcTemplate.update(sql, new Object[] {circle.getId(), circle.getName()});
+	}
+	
+	public void createTriangleTable() {
+		String sql = "CREATE TABLE TRIANGLE (ID INTEGER, NAME VARCHAR(50))";
+		jdbcTemplate.execute(sql);
 	}
 	
 	// Inner class mapper
