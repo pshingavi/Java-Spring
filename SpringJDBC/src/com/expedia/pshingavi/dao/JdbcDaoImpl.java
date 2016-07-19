@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.expedia.pshingavi.model.Circle;
@@ -13,13 +16,16 @@ import com.expedia.pshingavi.model.Circle;
 @Component
 public class JdbcDaoImpl {
 
+	@Autowired
+	private DataSource dataSource;
+	
+
+
 	public Circle getCircle(int circleId) {
 		Connection con = null;
 		// Init client driver
 		try{
-			String driver = "org.apache.derby.jdbc.ClientDriver";
-			Class.forName(driver).newInstance();
-			con = DriverManager.getConnection("jdbc:derby://localhost:1527/db");
+			con = dataSource.getConnection();
 			
 			PreparedStatement ps = con.prepareStatement("SELECT * from circle where id = ?");
 			ps.setInt(1,  circleId);
@@ -37,5 +43,13 @@ public class JdbcDaoImpl {
 				con.close();
 			} catch (SQLException e) {}
 		}
+	}
+	
+	public DataSource getDataSource() {
+		return dataSource;
+	}
+
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
 	}
 }
