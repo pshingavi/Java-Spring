@@ -25,4 +25,7 @@
 		<property name="maxTotal" value="5"/>
 	</bean>
 
+	<bean id="namedJdbcDaoImpl" class="com.expedia.pshingavi.dao.NamedJdbcDaoImpl">
+		<constructor-arg name="dataSource" index="" ref="dataSource" />
+	</bean>
 </beans>
