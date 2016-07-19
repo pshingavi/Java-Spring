@@ -10,6 +10,10 @@ public class Circle {
 		this.name = name;
 	}
 
+	public Circle() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}
