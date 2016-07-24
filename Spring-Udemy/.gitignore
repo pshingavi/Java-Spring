@@ -65,3 +65,6 @@ hs_err_pid*
 *.classpath
 *.project
 *.springBeans
+.idea/
+.metadata/
+.recommenders/
