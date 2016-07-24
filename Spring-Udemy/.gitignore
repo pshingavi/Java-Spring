@@ -60,3 +60,8 @@ hs_err_pid*
 
 */target/
 */.idea/*
+
+*/.settings/
+*.classpath
+*.project
+*.springBeans
