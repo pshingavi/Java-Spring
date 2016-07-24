@@ -1,8 +1,19 @@
 package com.expedia.pshingavi.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="circle")
 public class Circle {
 
+	@Column(name="ID")
+	@Id
 	private int id;
+	
+	@Column(name="NAME")
 	private String name;
 	
 	public Circle(int id, String name) {

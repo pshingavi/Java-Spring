@@ -28,4 +28,23 @@
 	<bean id="namedJdbcDaoImpl" class="com.expedia.pshingavi.dao.NamedJdbcDaoImpl">
 		<constructor-arg name="dataSource" index="" ref="dataSource" />
 	</bean>
+	
+	<!-- Tell spring to create just one bean -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- since using Annotation**Bean we need to tell what package to Scan -->
+		<!-- <property name="packagesToScan" value="com.expeedia.pshingavi.model" /> -->
+		<property name="annotatedClasses">
+     	<list>
+	       <value>com.expedia.pshingavi.model.Circle</value>
+     	</list>
+   </property>
+		
+		<property name="hibernateProperties">
+			<props>
+				<prop key="dialect">org.hibernate.dialect.DerbyDialect</prop>
+			</props> 
+		</property>
+	</bean>
+	
 </beans>
