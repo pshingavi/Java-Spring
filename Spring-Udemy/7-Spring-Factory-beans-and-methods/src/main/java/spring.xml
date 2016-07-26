@@ -6,8 +6,8 @@
 
 	<bean id="person" class="com.pshingavi.spring.Person"
 		factory-method="getPersonInstance">
-		<!-- <constructor-arg value="1" name="id" type="int"></constructor-arg>
-		<constructor-arg value="Preetam" name="name" type="String"></constructor-arg> -->
+		<constructor-arg value="1" name="id" type="int"></constructor-arg>
+		<constructor-arg value="Preetam" name="name" type="String"></constructor-arg>
 		<property name="taxId" value="123"></property>
 		<property name="address" ref="address"></property>
 	</bean>

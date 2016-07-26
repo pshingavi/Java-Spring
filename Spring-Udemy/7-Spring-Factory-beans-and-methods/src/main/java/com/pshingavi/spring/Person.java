@@ -19,9 +19,9 @@ public class Person {
 	}
 	
 	// see bean factory-method
-	public static Person getPersonInstance() {
+	public static Person getPersonInstance(int id, String name) {
 		System.out.println("Creating Person using factory-method");
-		return new Person(12, "test");
+		return new Person(id, name);
 	}
 	
 	public void onCreateMethod() {
