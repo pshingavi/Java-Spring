@@ -1,19 +1,19 @@
 package com.pshingavi.spring.logger;
 
 public class Logger {
-	private FileWriter fileWriter;
-	private ConsoleWriter consoleWriter;
+	private LogWriter fileWriter;
+	private LogWriter consoleWriter;
 	
-	public FileWriter getFileWriter() {
+	public LogWriter getFileWriter() {
 		return fileWriter;
 	}
-	public void setFileWriter(FileWriter fileWriter) {
+	public void setFileWriter(LogWriter fileWriter) {
 		this.fileWriter = fileWriter;
 	}
-	public ConsoleWriter getConsoleWriter() {
+	public LogWriter getConsoleWriter() {
 		return consoleWriter;
 	}
-	public void setConsoleWriter(ConsoleWriter consoleWriter) {
+	public void setConsoleWriter(LogWriter consoleWriter) {
 		this.consoleWriter = consoleWriter;
 	}
 }
