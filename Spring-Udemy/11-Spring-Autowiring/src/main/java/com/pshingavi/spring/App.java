@@ -16,10 +16,8 @@ public class App
     {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         Logger logger = ctx.getBean("logger", Logger.class);
-        LogWriter fileWriter = logger.getFileWriter();
-        LogWriter consoleWriter = logger.getConsoleWriter();
-        fileWriter.write();
-        consoleWriter.write();
+        logger.writeToConsole();
+        logger.writeToFile();
         ((ClassPathXmlApplicationContext)ctx).close();
     }
 }

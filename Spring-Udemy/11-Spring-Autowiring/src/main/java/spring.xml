@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="logger" class="com.pshingavi.spring.logger.Logger" autowire="byName"></bean>
+	<bean id="logger" class="com.pshingavi.spring.logger.Logger" autowire="constructor"></bean>
 	
 	<bean id="fileWriter" class="com.pshingavi.spring.logger.FileWriter"></bean>
 	<bean id="consoleWriter" class="com.pshingavi.spring.logger.ConsoleWriter"></bean>
