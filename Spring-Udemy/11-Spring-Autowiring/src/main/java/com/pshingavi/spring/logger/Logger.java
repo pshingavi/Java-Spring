@@ -4,30 +4,23 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Logger {
-	private LogWriter fileWriter;
+	@Resource
+	private LogWriter fileWriter;	// From @Component for Implementing class FileWriter
 	// Doesn't need a set method, looks at the type
-	@Resource(name="consoleWriter1")
+	@Resource(name="consoleWriter2")	// fROM SPRING.XML or if @Component("consoleWriter2") by impl class ConsoleWriter
 	private LogWriter consoleWriter;
-	
 	
 	public LogWriter getFileWriter() {
 		return fileWriter;
 	}
 
-	// This type of autowiring on set methods depends on type passed
-	@Autowired
-	public void setFileWriter(LogWriter fileWriter) {
-		this.fileWriter = fileWriter;
-	}
 	public LogWriter getConsoleWriter() {
 		return consoleWriter;
 	}
-	/*public void setConsoleWriter(LogWriter consoleWriter) {
-		this.consoleWriter = consoleWriter;
-	}*/
 	
 	public void writeToFile() {
 		fileWriter.write();
