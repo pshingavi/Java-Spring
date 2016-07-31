@@ -24,7 +24,9 @@ public class App
         	for(Offer offer : allOffers) {
 	        	System.out.println(offer);
 	        }
-        	System.out.println(offersDAO.deleteById(1));
+        	//System.out.println(offersDAO.deleteById(1));
+        	Offer offer1 = new Offer("test1", "test1@test.com", "test1 text");
+        	System.out.println(offersDAO.create(offer1));
         	allOffers = offersDAO.getOffers();
         	for(Offer offer : allOffers) {
 	        	System.out.println(offer);

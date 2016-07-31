@@ -6,6 +6,15 @@ public class Offer {
 	private String name;
 	private String email;
 	private String text;
+	
+	public Offer(){}
+	
+	public Offer(String name, String email, String text) {
+		this.name = name;
+		this.email = email;
+		this.text = text;
+	}
+	
 	public int getId() {
 		return id;
 	}
