@@ -52,4 +52,15 @@ public class OffersDAO {
 			}
 		});
 	}
+	
+	
+	/**
+	 * Return number of rows affected
+	 * @param id
+	 * @return
+	 */
+	public int deleteById(int id) {
+		MapSqlParameterSource params = new MapSqlParameterSource("id", id);
+		return jdbc.update("delete from offers where id = :id", params);
+	}
 }

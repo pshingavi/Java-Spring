@@ -24,7 +24,11 @@ public class App
         	for(Offer offer : allOffers) {
 	        	System.out.println(offer);
 	        }
-        	System.out.println(offersDAO.getOfferById(10));
+        	System.out.println(offersDAO.deleteById(1));
+        	allOffers = offersDAO.getOffers();
+        	for(Offer offer : allOffers) {
+	        	System.out.println(offer);
+	        }
 		} catch (DataAccessException e) {	// Any DB related exceptions are thrown into DataAccessException parent exception class
 			System.out.println(e.getMessage());
 			System.out.println(e.getClass());	// Exact class of exception
