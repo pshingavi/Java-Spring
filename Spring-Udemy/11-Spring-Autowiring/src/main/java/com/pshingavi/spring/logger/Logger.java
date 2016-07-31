@@ -1,11 +1,13 @@
 package com.pshingavi.spring.logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class Logger {
 	private LogWriter fileWriter;
 	// Doesn't need a set method, looks at the type
 	@Autowired
+	@Qualifier("console2")
 	private LogWriter consoleWriter;
 	
 	
