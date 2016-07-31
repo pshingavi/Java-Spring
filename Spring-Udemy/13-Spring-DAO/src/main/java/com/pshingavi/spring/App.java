@@ -1,5 +1,6 @@
 package com.pshingavi.spring;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -24,9 +25,17 @@ public class App
         	for(Offer offer : allOffers) {
 	        	System.out.println(offer);
 	        }
-        	//System.out.println(offersDAO.deleteById(1));
-        	Offer offer1 = new Offer(4, "test1_update", "test1_update@test.com", "test1_update text");
-        	System.out.println(offersDAO.update(offer1));
+        	
+        	List<Offer> offerList = new ArrayList<Offer>();
+        	offerList.add(new Offer("prits", "prits@test.com", "prits text"));
+        	offerList.add(new Offer("homedecor", "homedecor@test.com", "homedecor text"));
+        	offerList.add(new Offer("dummy", "dummy@test.com", "dummy text"));
+        	int[] result = offersDAO.createInBatch(offerList);
+        	
+        	for(int nRowsUpdated : result) {
+        		System.out.println("Rows updated : " + nRowsUpdated);
+        	}
+        	
         	allOffers = offersDAO.getOffers();
         	for(Offer offer : allOffers) {
 	        	System.out.println(offer);
