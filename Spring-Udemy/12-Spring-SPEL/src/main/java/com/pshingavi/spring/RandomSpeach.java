@@ -2,6 +2,9 @@ package com.pshingavi.spring;
 
 import java.util.Random;
 
+import org.springframework.stereotype.Component;
+
+@Component("randomSpeach")
 public class RandomSpeach {
 
 	private static String [] speachTextArray = {
