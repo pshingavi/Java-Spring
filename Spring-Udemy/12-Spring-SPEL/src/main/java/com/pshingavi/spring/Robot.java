@@ -17,6 +17,11 @@ public class Robot {
 	}
 
 	@Autowired
+	// Example SPEL : 
+	//1. Non static new java.util.Date().toString()
+	//2. If it's a static variable or method then use T(Class).method()/variable.
+		// Example Math.PI (won't work) use T(Math).PI
+		// "#{T(Math).PI le 3}" => false (3.14 < 3) similar use eq, ge, ternary operator etc.
 	public void setSpeach(@Value("#{randomSpeach.generateRandomSpeach()}") String speach) {
 		this.speach = speach;
 	}
