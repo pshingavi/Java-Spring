@@ -10,19 +10,15 @@ public class Robot {
 	private String id = "default id";
 	private String speach = "Hello";
 	
-	// Also check ?. in the SPEL to handle NPE if any
+	// Autowire from property file
 	@Autowired
-	public void setId(@Value("#{randomSpeach.generateRandomSpeach()?.length()}") String id) {
+	public void setId(@Value("${r0.id}") String id) {
 		this.id = id;
 	}
 
+	//Autowire from property file
 	@Autowired
-	// Example SPEL : 
-	//1. Non static new java.util.Date().toString()
-	//2. If it's a static variable or method then use T(Class).method()/variable.
-		// Example Math.PI (won't work) use T(Math).PI
-		// "#{T(Math).PI le 3}" => false (3.14 < 3) similar use eq, ge, ternary operator etc.
-	public void setSpeach(@Value("#{randomSpeach.generateRandomSpeach()}") String speach) {
+	public void setSpeach(@Value("${r0.speach}") String speach) {
 		this.speach = speach;
 	}
 
