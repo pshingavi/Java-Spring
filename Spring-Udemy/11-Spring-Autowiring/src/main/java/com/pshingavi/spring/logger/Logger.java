@@ -1,9 +1,10 @@
 package com.pshingavi.spring.logger;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 public class Logger {
 	private LogWriter fileWriter;
@@ -34,5 +35,15 @@ public class Logger {
 	
 	public void writeToConsole() {
 		consoleWriter.write();
+	}
+	
+	@PostConstruct
+	public void init() {
+		System.out.println("Object Created !");
+	}
+	
+	@PreDestroy
+	public void destroy() {
+		System.out.println("Object about to be destroyed");
 	}
 }
