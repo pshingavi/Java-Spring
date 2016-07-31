@@ -8,7 +8,7 @@
 	<bean id="logger" class="com.pshingavi.spring.logger.Logger"></bean>
 	
 	<bean id="fileWriter" class="com.pshingavi.spring.logger.FileWriter"></bean>
-	<bean id="consoleWriter" class="com.pshingavi.spring.logger.ConsoleWriter"></bean>
+	<bean id="consoleWriter1" class="com.pshingavi.spring.logger.ConsoleWriter"></bean>
 	<bean id="consoleWriter2" class="com.pshingavi.spring.logger.ConsoleWriter">
 		<qualifier value="console2"></qualifier>
 	</bean>
