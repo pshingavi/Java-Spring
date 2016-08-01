@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.pshingavi.spring.model.Offer;
 
@@ -67,9 +68,11 @@ public class OffersDAO {
 		return jdbc.update("insert into offers (name, email, text) values (:name, :email, :text)", params) == 1;
 	}
 	
+	@Transactional
+	// This creates multiple PreparedStatements. To rollback on any fail use tx annotations. Check creating id=0
 	public int[] createInBatch(List<Offer> offerList) {
 		SqlParameterSource[] params = SqlParameterSourceUtils.createBatch(offerList.toArray());
-		return jdbc.batchUpdate("insert into offers (name, email, text) values (:name, :email, :text)", params);
+		return jdbc.batchUpdate("insert into offers (id, name, email, text) values (:id, :name, :email, :text)", params);
 	}
 	
 	/**
