@@ -69,7 +69,8 @@ public class OffersDAO {
 	}
 	
 	@Transactional
-	// This creates multiple PreparedStatements. To rollback on any fail use tx annotations. Check creating id=0
+	// This creates multiple PreparedStatements. Equavalent to the jdbc Prepared Statement 
+	//To rollback on any fail use tx annotations. Check creating id=0
 	public int[] createInBatch(List<Offer> offerList) {
 		SqlParameterSource[] params = SqlParameterSourceUtils.createBatch(offerList.toArray());
 		return jdbc.batchUpdate("insert into offers (id, name, email, text) values (:id, :name, :email, :text)", params);

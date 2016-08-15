@@ -27,7 +27,7 @@ public class App
 	        }
         	
         	List<Offer> offerList = new ArrayList<Offer>();
-        	offerList.add(new Offer(3, "prits_test", "prits_test@test.com", "prits_test text"));
+        	offerList.add(new Offer(5, "prits_test", "prits_test@test.com", "prits_test text"));
         	offerList.add(new Offer(2, "homedecor", "homedecor@test.com", "homedecor text"));
         	int[] result = offersDAO.createInBatch(offerList);
         	
