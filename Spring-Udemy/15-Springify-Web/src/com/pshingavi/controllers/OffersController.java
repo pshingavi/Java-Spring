@@ -3,10 +3,11 @@
  */
 package com.pshingavi.controllers;
 
-import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author pshingavi
@@ -16,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class OffersController {
 
 	@RequestMapping("/")
-	public String showHome(HttpSession session) {
-		session.setAttribute("name", "Preetam");
-		return "home";
+	public ModelAndView showHome() {
+		// ModelAndView is only for the request scope
+		ModelAndView mv = new ModelAndView("home");
+		Map<String, Object> model = mv.getModel();
+		model.put("name", "<b>Preetam</b>");	// This will be interpreted as bold tags in HTML
+		return mv;
 	}
 }

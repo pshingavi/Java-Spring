@@ -9,6 +9,7 @@
 <body>
 Home page
 <br />
-<p>Session : <%= session.getAttribute("name")%></p>
+<p>Request : <%= request.getAttribute("name")%></p>
+<p>Request (using Expression Language) : ${name} </p>
 </body>
 </html>
